@@ -1,0 +1,434 @@
+.overlay {
+  /* Скрываем подложку  */
+  opacity: 0;
+  visibility: hidden;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  transition: 0.3s all;
+}
+
+/* Стили для модальных окон */
+
+.modal {
+  /* Скрываем окна  */
+  opacity: 0;
+  visibility: hidden;
+
+  /*  Установаем ширину окна  */
+  width: 100%;
+  max-width: 500px;
+
+  /*  Центрируем и задаем z-index */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30; /* Должен быть выше чем у подложки*/
+
+  /*  Побочные стили   */
+  // box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 30px;
+  border-radius: 3px;
+  background-color: rgb(217, 139, 139);
+  transition: 500ms all $time-function;
+
+  @include mobile {
+    padding: 40px 30px;
+  }
+}
+
+/* Стили для активных классов подложки и окна */
+
+.modal.active,
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Стили для кнопки закрытия */
+
+.main__close-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  cursor: pointer;
+}
+
+// ------------------------------------modal-1-------------------------
+// Пишем свои стили здесь
+.modal-buy {
+  position: fixed;
+
+  flex-direction: column;
+  display: flex;
+  border: none;
+  background-color: $hero-background-color;
+  box-shadow: inset 0px 0px 19px 13px #d4144336;
+
+  background-image: url(../images/desktop/product-1@2x.png);
+
+  background-repeat: no-repeat;
+
+  @include mobile {
+    width: 300px;
+    height: 400px;
+
+    top: 220px;
+    background-position: right calc(50% - 50px) bottom -5px;
+    background-size: cover;
+  }
+
+  @include tablet {
+    width: 600px;
+    height: 250px;
+
+    background-position: right calc(50% - 135px) bottom -220px;
+    background-size: cover;
+
+    top: 35%;
+    left: 50%;
+  }
+
+  @include desktop {
+    width: 600px;
+    height: 250px;
+
+    background-position: right calc(50% - 135px) bottom -220px;
+    background-size: cover;
+
+    top: 50%;
+    left: 50%;
+  }
+
+  &__choice {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0 5px;
+    padding-bottom: 10px;
+  }
+
+  &__title {
+    font-family: 'Titan One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.14;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+    color: $product-card3-color;
+    text-shadow: 1px 1px 13px $dark-btn-color;
+
+    padding-bottom: 15px;
+  }
+
+  &__label {
+    font-family: $title-font;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    color: $product-card3-color;
+    text-shadow: 1px 1px 13px $dark-btn-color;
+  }
+
+  &__select {
+    font-family: $title-font;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+
+    color: $dark-btn-color;
+    background-color: $product-card3-color;
+    box-shadow: 1px 1px 6px 0px $dark-btn-color;
+
+    border: none;
+    border-radius: 4px;
+
+    position: relative;
+    left: 110px;
+    bottom: 15px;
+    width: 95px;
+  }
+
+  &__option {
+    font-family: $title-font;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 0.9;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $dark-btn-color;
+    background-color: $product-card3-color;
+  }
+
+  &__btn {
+    width: 120px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: $product-card3-color;
+    box-shadow: 1px 1px 10px 0px $dark-btn-color;
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    font-family: $title-font;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $dark-title-color;
+  }
+
+  &__icon {
+    fill: $dark-title-color;
+    margin-left: 8px;
+  }
+}
+
+@include desktop {
+  @-webkit-keyframes modal-buy__btn {
+    50% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+  @keyframes modal-buy__btn {
+    50% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+
+  .modal-buy__btn:hover,
+  .modal-buy__btn:focus,
+  .modal-buy__btn:active {
+    -webkit-animation-name: modal-buy__btn;
+    animation-name: modal-buy__btn;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+  }
+
+  @-webkit-keyframes modal-buy__select {
+    50% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+  @keyframes modal-buy__select {
+    50% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+
+  .modal-buy__select:hover,
+  .modal-buy__select:focus,
+  .modal-buy__select:active {
+    -webkit-animation-name: modal-buy__select;
+    animation-name: modal-buy__select;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+  }
+}
+// ------------------------------------modal-2-------------------------
+// Пишем свои стили здесь
+.modal-2 {
+  padding: 60px 40px 40px;
+  background-color: #ffb8ca;
+  border-radius: 20px;
+  border: #fff solid 10px;
+
+  // transition: transform 2500ms $time-function;
+}
+
+.modal__close-btn {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+
+  background-color: #ffb8ca;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  // &:hover {
+  //   fill: $accent-color;
+  // }
+}
+
+.cow-modal-2-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal-2__text {
+  position: relative;
+  z-index: 2;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.76;
+  color: #ffffff;
+
+  text-align: justify;
+}
+// ------------------------------------modal-3-------------------------
+// Пишем свои стили здесь
+.modal-3 {
+  width: 478px;
+  height: 512px;
+  padding: 60px 80px;
+  background-color: transparent;
+  background-image: url(../images/desktop/product-1@2x.png),
+    linear-gradient(180deg, transparent, transparent 30%, #ffa5ba 70%, #ffa5ba);
+  background-size: cover;
+  border: none;
+  border-radius: 20%;
+}
+
+.modal-3__text {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 176%;
+  /* or 28px */
+
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  color: #ffffff;
+}
+
+// ------------------------------------modal-4-------------------------
+// Пишем свои стили здесь
+.modal-4 {
+  width: 478px;
+  height: 512px;
+  padding: 60px 80px;
+  background-color: transparent;
+  background-image: url(../images/desktop/product-2@2x.png),
+    linear-gradient(180deg, transparent, transparent 30%, #f0d1a5 70%, #f0d1a5);
+  background-size: cover;
+  border: none;
+  border-radius: 20%;
+}
+
+// ------------------------------------modal-5-------------------------
+// Пишем свои стили здесь
+.modal-5 {
+  width: 478px;
+  height: 512px;
+  padding: 60px 80px;
+  background-color: transparent;
+  background-image: url(../images/desktop/product-3@2x.png),
+    linear-gradient(180deg, transparent, transparent 30%, #c2e297 70%, #c2e297);
+  background-size: cover;
+  border: none;
+  border-radius: 20%;
+}
+
+// ------------------------------------modal-6-------------------------
+
+.modal-6 {
+  padding: 60px 40px 40px;
+  background-color: #ffb8ca;
+  border-radius: 20px;
+  border: #fff solid 10px;
+
+  // transition: transform 2500ms $time-function;
+}
+
+.modal__close-btn {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+
+  background-color: #ffb8ca;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  // &:hover {
+  //   fill: $accent-color;
+  // }
+}
+
+.cow-modal-6-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal-6__text {
+  position: relative;
+  z-index: 2;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.76;
+  color: #ffffff;
+
+  text-align: justify;
+}
+
+// ------------------------------------modal-7-------------------------
+// Пишем свои стили здесь
+
+// ------------------------------------modal-8-------------------------
+// Пишем свои стили здесь
